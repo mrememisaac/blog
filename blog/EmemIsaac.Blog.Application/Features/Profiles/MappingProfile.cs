@@ -10,6 +10,8 @@ namespace EmemIsaac.Blog.Application.Features.Profiles
             CreateMap<Categories.Queries.GetCategory.Category, Domain.Entities.Category>().ReverseMap();
             CreateMap<Categories.Queries.GetCategories.Category, Domain.Entities.Category>().ReverseMap();
             CreateMap<Categories.Queries.GetCategoriesWithArticles.Category, Domain.Entities.Category>().ReverseMap();
+            CreateMap<Categories.Commands.CreateCategory.CreateCategoryModel, Domain.Entities.Category>().ReverseMap();
+            CreateMap<Categories.Commands.CreateCategory.CreateCategoryCommand, Domain.Entities.Category>().ReverseMap();
         }
     }
 }
