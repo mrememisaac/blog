@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EmemIsaac.Blog.Application.Contracts.Persistence;
-using EmemIsaac.Blog.Application.Features.Categories.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
