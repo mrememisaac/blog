@@ -24,7 +24,7 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Commands.CreateCategory
         public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
 
-            Domain.Entities.Category category = categoryRepository.GetByName(request.Name);
+            Domain.Entities.Category category = await categoryRepository.GetByName(request.Name);
             if (category != null) return new CreateCategoryCommandResponse(mapper.Map<CreateCategoryModel>(category));
 
             var validationResult = await createCategoryValidator.ValidateAsync(request);
