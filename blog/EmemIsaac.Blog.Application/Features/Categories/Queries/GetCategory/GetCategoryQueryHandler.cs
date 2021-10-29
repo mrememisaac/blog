@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
 {
-    public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, Category>
+    public class GetCategoryQueryHandler : IRequestHandler<GetCategoryQuery, GetCategoryModel>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -17,10 +17,10 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
             _mapper = mapper;
         }
 
-        public async Task<Category> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
+        public async Task<GetCategoryModel> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
         {
             var category = (await _categoryRepository.GetById(request.Id));
-            return _mapper.Map<Category>(category);
+            return _mapper.Map<GetCategoryModel>(category);
         }
     }
 }

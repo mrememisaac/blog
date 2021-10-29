@@ -18,6 +18,6 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
 
         public Guid CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public GetCategoryModel Category { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace EmemIsaac.Blog.Application.Profiles
         {
             //Category
             CreateMap<Features.Categories.Queries.GetCategory.Article, Article>().ReverseMap();
-            CreateMap<Features.Categories.Queries.GetCategory.Category, Category>().ReverseMap();
+            CreateMap<Features.Categories.Queries.GetCategory.GetCategoryModel, Category>().ReverseMap();
             CreateMap<Features.Categories.Queries.GetCategories.GetCategoryModel, Category>().ReverseMap();
             CreateMap<Features.Categories.Queries.GetCategoriesWithArticles.Category, Category>().ReverseMap();
             CreateMap<Features.Categories.Commands.CreateCategory.CreateCategoryModel, Category>().ReverseMap();

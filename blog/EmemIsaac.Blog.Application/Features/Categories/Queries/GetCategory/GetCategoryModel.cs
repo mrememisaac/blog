@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
 {
-    public class Category
+    public class GetCategoryModel
     {
         public Guid Id { get; set; }
 
