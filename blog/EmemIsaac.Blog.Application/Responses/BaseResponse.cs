@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EmemIsaac.Blog.Application.Responses
 {
@@ -33,8 +35,14 @@ namespace EmemIsaac.Blog.Application.Responses
             {
                 throw new ArgumentNullException(nameof(errors));
             }
-
+            Successful = false;
             ValidationErrors.AddRange(errors);
+        }
+
+        public BaseResponse(ValidationResult result)
+        {
+            ValidationErrors.AddRange(result.Errors.Select(e => e.ErrorMessage));
+            Successful = false;
         }
     }
 }
