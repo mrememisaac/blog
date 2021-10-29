@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategories
 {
-    public class Category
+    public class GetCategoryModel
     {
         public Guid Id { get; set; }
 
