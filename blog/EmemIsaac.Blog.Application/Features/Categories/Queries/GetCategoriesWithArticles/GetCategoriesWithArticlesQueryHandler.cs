@@ -21,7 +21,7 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategoriesWi
 
         public async Task<List<Category>> Handle(GetCategoriesWithArticlesQuery request, CancellationToken cancellationToken)
         {
-            var categories = (await _categoryRepository.ListAll()).OrderBy(x => x.Name);
+            List<Domain.Entities.Category> categories = (await _categoryRepository.GetCategoriesWithArticles()).OrderBy(x => x.Name).ToList();
             return _mapper.Map<List<Category>>(categories);
         }
     }
