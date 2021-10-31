@@ -15,19 +15,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{83A5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FA0BED9F-A453-47C2-B36D-E8131D7E7194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmemIsaac.Blog.Application", "blog\EmemIsaac.Blog.Application\EmemIsaac.Blog.Application.csproj", "{6138ADB9-C5B3-445B-B38C-E46FA44D8C21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Application", "blog\EmemIsaac.Blog.Application\EmemIsaac.Blog.Application.csproj", "{6138ADB9-C5B3-445B-B38C-E46FA44D8C21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmemIsaac.Blog.Domain", "blog\EmemIsaac.Blog.Domain\EmemIsaac.Blog.Domain.csproj", "{309EB8A8-AF5D-4F7A-95FB-B37B68C4D577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Domain", "blog\EmemIsaac.Blog.Domain\EmemIsaac.Blog.Domain.csproj", "{309EB8A8-AF5D-4F7A-95FB-B37B68C4D577}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{101712FB-0C44-4D96-B038-08AD0097C8C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmemIsaac.Blog.Infrastructure", "blog\EmemIsaac.Blog.Infrastructure\EmemIsaac.Blog.Infrastructure.csproj", "{29BAF729-DE49-4452-A196-E20E8DA4BB78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Infrastructure", "blog\EmemIsaac.Blog.Infrastructure\EmemIsaac.Blog.Infrastructure.csproj", "{29BAF729-DE49-4452-A196-E20E8DA4BB78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmemIsaac.Blog.Persistence", "blog\EmemIsaac.Blog.Persistence\EmemIsaac.Blog.Persistence.csproj", "{40BDCAD8-8F7B-45E5-BA76-382B780B67EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Persistence", "blog\EmemIsaac.Blog.Persistence\EmemIsaac.Blog.Persistence.csproj", "{40BDCAD8-8F7B-45E5-BA76-382B780B67EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E88A0259-590D-430D-83B9-73E52E3859E9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{16B230F0-C5EA-4102-965A-9B7617618863}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F9B1E060-69C5-4B56-A656-11F012BF4549}"
+	ProjectSection(SolutionItems) = preProject
+		.github\depandabot.yml = .github\depandabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{986B00FE-CF24-4C9B-A253-0F1672A16A3A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +78,7 @@ Global
 		{40BDCAD8-8F7B-45E5-BA76-382B780B67EC} = {101712FB-0C44-4D96-B038-08AD0097C8C3}
 		{E88A0259-590D-430D-83B9-73E52E3859E9} = {0E0B913A-38D3-43D1-8180-FE877629F738}
 		{16B230F0-C5EA-4102-965A-9B7617618863} = {0E0B913A-38D3-43D1-8180-FE877629F738}
+		{986B00FE-CF24-4C9B-A253-0F1672A16A3A} = {F9B1E060-69C5-4B56-A656-11F012BF4549}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {155C93D9-7CFD-47B3-A3E6-AAEDE8AA2C3C}
