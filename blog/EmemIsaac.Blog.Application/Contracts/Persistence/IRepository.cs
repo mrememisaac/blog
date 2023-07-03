@@ -15,5 +15,7 @@ namespace EmemIsaac.Blog.Application.Contracts.Persistence
         Task Update(T entity);
 
         Task Delete(T entity);
+
+        Task<bool> Exists(Guid id);
     }
 }
