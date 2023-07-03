@@ -1,21 +1,56 @@
 ﻿using EmemIsaac.Blog.Domain.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EmemIsaac.Blog.Domain.Entities
 {
 
     public class Article : Entity
     {
-        public string Title { get; set; }
+        public const int MinimumTitleLength = 10;
+        public const int MinimumDescriptionLength = 20;
+        public const int MaximumTitleLength = MinimumTitleLength * 10;
+        public const int MaximumDescriptionLength = MinimumDescriptionLength * 10;
 
-        public string  ImageUrl { get; set; }
+        [SetsRequiredMembers]
+        public Article(Guid id, string title, string imageUrl, string url, string description)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentException($"'{nameof(title)}' cannot be null or empty.", nameof(title));
+            }
 
-        public string Url { get; set; }
+            if (string.IsNullOrEmpty(imageUrl))
+            {
+                throw new ArgumentException($"'{nameof(imageUrl)}' cannot be null or empty.", nameof(imageUrl));
+            }
 
-        public string Description { get; set; }
+            if (string.IsNullOrEmpty(url))
+            {
+                throw new ArgumentException($"'{nameof(url)}' cannot be null or empty.", nameof(url));
+            }
 
-        public string AuthorId { get; set; }
+            if (string.IsNullOrEmpty(description))
+            {
+                throw new ArgumentException($"'{nameof(description)}' cannot be null or empty.", nameof(description));
+            }
+            Id = id;
+            Title = title;
+            ImageUrl = imageUrl;
+            Url = url;
+            Description = description;
+        }
+
+        private Article() { }
+
+        public required string Title { get; init; }
+
+        public required string ImageUrl { get; init; }
+
+        public required string Url { get; init; }
+
+        public required string Description { get; init; }
 
         public Guid CategoryId { get; set; }
 
@@ -25,7 +60,11 @@ namespace EmemIsaac.Blog.Domain.Entities
 
         public Stage Stage { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+
+        public ICollection<Section> Sections { get; set; } = new List<Section>();
 
     }
 }
