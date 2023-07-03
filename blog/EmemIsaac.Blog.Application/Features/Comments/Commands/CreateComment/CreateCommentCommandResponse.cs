@@ -8,11 +8,9 @@ namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
     public class CreateCommentCommandResponse : BaseResponse
     {
         public CreateCommentModel Comment { get; set; }
-        public IEnumerable<string> Errors { get; } = new List<string>();
 
         public CreateCommentCommandResponse() : base()
         {
-
         }
 
         public CreateCommentCommandResponse(ValidationResult result) : base(result)
@@ -25,14 +23,14 @@ namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
             Comment = model ?? throw new ArgumentNullException(nameof(model));
         }
 
-        public CreateCommentCommandResponse(CreateCommentModel model, string message) : base(message)
+        public CreateCommentCommandResponse(CreateCommentModel model, string message)
         {
             Comment = model ?? throw new ArgumentNullException(nameof(model));
         }
 
-        public CreateCommentCommandResponse(IEnumerable<string> errors) :base(errors)
+        public CreateCommentCommandResponse(List<string> errors) :base(errors)
         {
-            Errors = errors ?? throw new ArgumentNullException(nameof(errors));
+            ValidationErrors = errors ?? throw new ArgumentNullException(nameof(errors));
         }
     }
 }

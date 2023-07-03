@@ -8,6 +8,7 @@ namespace EmemIsaac.Blog.Application.Responses
     public class BaseResponse
     {
         public string Message { get; }
+
         public bool Successful { get; protected set; }
 
         public List<string> ValidationErrors { get; protected set; } = new List<string>();
