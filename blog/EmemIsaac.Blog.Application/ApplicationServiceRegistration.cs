@@ -11,7 +11,7 @@ namespace EmemIsaac.Blog.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddSingleton<CreateCategoryCommandValidator>();
             services.AddSingleton<UpdateCategoryCommandValidator>();
             return services;
