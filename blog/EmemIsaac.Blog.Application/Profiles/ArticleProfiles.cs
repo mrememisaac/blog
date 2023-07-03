@@ -19,7 +19,7 @@ namespace EmemIsaac.Blog.Application.Profiles
                 .ForMember(d => d.CreatorId, opt => opt.Ignore())
                 .ForMember(d => d.CreateDate, opt => opt.Ignore())
                 .ForMember(d => d.ModifierId, opt => opt.Ignore())
-                .ForMember(d => d.ModifyDate, opt => opt.Ignore())
+                .ForMember(d => d.LastModifiedDate, opt => opt.Ignore())
                 .ForMember(d => d.Category, opt => opt.Ignore())
                 .ForMember(d => d.Tags, opt => opt.Ignore())
                 .ForMember(d => d.PublishDate, opt => opt.Ignore())
@@ -39,7 +39,7 @@ namespace EmemIsaac.Blog.Application.Profiles
                 .ForMember(d => d.Tags, opt => opt.Ignore())
                 .ForMember(d => d.Comments, opt => opt.Ignore())
                 .ForMember(d => d.ModifierId, opt => opt.Ignore())
-                .ForMember(d => d.ModifyDate, opt => opt.Ignore());
+                .ForMember(d => d.LastModifiedDate, opt => opt.Ignore());
             CreateMap<Article, UpdateArticleCommandResponse>();
         }
     }
