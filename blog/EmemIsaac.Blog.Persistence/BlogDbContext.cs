@@ -28,7 +28,7 @@ namespace EmemIsaac.Blog.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Modified:
-                        entry.Entity.ChangeDate = DateTimeOffset.Now; 
+                        entry.Entity.LastModifiedDate = DateTimeOffset.Now; 
                         break;
                     case EntityState.Added:
                         entry.Entity.CreateDate = DateTimeOffset.Now;
