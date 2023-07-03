@@ -11,5 +11,7 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Commands.CreateCategory
 
         public string Name { get; set; }
 
+        public string Url { get; private set; }
+
     }
 }
