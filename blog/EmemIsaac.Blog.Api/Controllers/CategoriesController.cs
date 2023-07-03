@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace EmemIsaac.Blog.Api.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class CategoriesController : ControllerBase
@@ -26,7 +27,7 @@ namespace EmemIsaac.Blog.Api.Controllers
 
         [HttpGet("all", Name = nameof(GetAllCategories))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Application.Features.Categories.Queries.GetCategories.GetCategoryModel>>> GetAllCategories() 
+        public async Task<ActionResult<IEnumerable<Application.Features.Categories.Queries.GetCategories.GetCategoryModel>>> GetAllCategories()
         {
             var categories = await mediator.Send(new GetCategoriesQuery());
             return Ok(categories);
@@ -50,7 +51,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(category);
         }
 
-        [HttpPost("createcategory", Name =nameof(CreateCategory))]
+        [HttpPost("createcategory", Name = nameof(CreateCategory))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<CreateCategoryCommandResponse>> CreateCategory([FromBody] CreateCategoryCommand createCategoryCommand)
         {
@@ -58,7 +59,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPut("updatecategory", Name =nameof(UpdateCategory))]
+        [HttpPut("updatecategory", Name = nameof(UpdateCategory))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
@@ -68,7 +69,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return NoContent();
         }
 
-        [HttpDelete("delete", Name =nameof(DeleteCategory))]
+        [HttpDelete("delete", Name = nameof(DeleteCategory))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
