@@ -10,8 +10,8 @@ namespace EmemIsaac.Blog.Domain.Common
 
         public string CreatorId { get; set; }
 
-        public DateTimeOffset ChangeDate { get; set; }
+        public DateTimeOffset LastModifiedDate { get; set; }
 
-        public string ChangerId { get; set; }
+        public string ModifierId { get; set; }
     }
 }
