@@ -29,6 +29,11 @@ namespace EmemIsaac.Blog.Persistence.Repositories
             await context.SaveChangesAsync();
         }
 
+        public async Task<bool> Exists(Guid id)
+        {
+            return await context.Set<T>().FindAsync(id) is not null;
+        }
+
         public async Task<T> GetById(Guid id)
         {
             return await context.Set<T>().FindAsync(id);
