@@ -21,7 +21,7 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Commands.UpdateCategory
             this.validator = validator ?? throw new ArgumentNullException(nameof(validator));
         }
 
-        public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await categoryRepository.GetById(request.Id);
             if (category == null) throw new NotFoundException(nameof(UpdateCategoryModel), request.Id);
@@ -33,8 +33,6 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Commands.UpdateCategory
             //update
             mapper.Map(request, category, typeof(UpdateCategoryCommand), typeof(Domain.Entities.Category));
             await categoryRepository.Update(category);
-
-            return Unit.Value;
         }
     }
 }
