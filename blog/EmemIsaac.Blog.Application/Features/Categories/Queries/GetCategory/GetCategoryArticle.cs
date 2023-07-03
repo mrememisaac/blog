@@ -2,7 +2,7 @@
 
 namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
 {
-    public class Article
+    public class GetCategoryArticle
     {
         public Guid Id { get; set; }
         
@@ -14,9 +14,7 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
 
         public string Description { get; set; }
 
-        public string AuthorId { get; set; }
-
-        public Guid CategoryId { get; set; }
+        public string AuthorName { get; set; }
 
         public GetCategoryModel Category { get; set; }
     }

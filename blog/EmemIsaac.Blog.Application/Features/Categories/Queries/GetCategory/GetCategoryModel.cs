@@ -8,7 +8,5 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategory
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-
-        public List<Article> Articles { get; set; }
     }
 }
