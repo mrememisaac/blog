@@ -19,12 +19,11 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Commands.DeleteCategory
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<Unit> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+        public async Task Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = await categoryRepository.GetById(request.CategoryId);
             if (category == null) throw new NotFoundException("Category", request.CategoryId);
             await categoryRepository.Delete(category);
-            return Unit.Value;
         }
     }
 }
