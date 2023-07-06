@@ -5,6 +5,8 @@ namespace EmemIsaac.Blog.Domain.Entities
 {
     public class Category : Entity
     {
+        public const int MaximumCategoryNameLength = 50;
+
         public string Name { get; set; }
 
         public string Url { get; private set; }
@@ -19,6 +21,10 @@ namespace EmemIsaac.Blog.Domain.Entities
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrEmpty(name))
             {
                 throw new System.ArgumentException($"'{nameof(name)}' cannot be null, empty or whitespace.", nameof(name));
+            }
+            if (name.Length >  MaximumCategoryNameLength)
+            {
+                throw new System.ArgumentException($"'{nameof(name)}' cannot be longer than {MaximumCategoryNameLength}.", nameof(name));
             }
             Name = name;
             Url = name.Replace(" ", "-");
