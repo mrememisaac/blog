@@ -20,10 +20,6 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Commands.UpdateArticle
 
         public ICollection<ArticleSection> Sections { get; set; }
 
-        public DateTimeOffset ModifyDate { get; set; }
-
-        public string ModifierId { get; set; }
-
         public string Stage { get; set; }
 
     }
