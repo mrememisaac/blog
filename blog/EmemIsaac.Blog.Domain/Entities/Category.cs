@@ -21,6 +21,7 @@ namespace EmemIsaac.Blog.Domain.Entities
                 throw new System.ArgumentException($"'{nameof(name)}' cannot be null, empty or whitespace.", nameof(name));
             }
             Name = name;
+            Url = name.Replace(" ", "-");
         }
     }
 }
