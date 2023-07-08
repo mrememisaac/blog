@@ -24,16 +24,16 @@ namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
         public async Task<CreateCommentCommandResponse> Handle(CreateCommentCommand request, CancellationToken cancellationToken)
         {
             Comment twin = await commentRepository.GetByContentAuthorAndArticle(request.Content, request.AuthorId, request.ArticleId);
-            if (twin != null) 
-                return new CreateCommentCommandResponse(mapper.Map<CreateCommentModel>(twin), "Comment already exists");
+            if (twin != null)
+                return mapper.Map<CreateCommentCommandResponse>(twin);
 
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
-                return new CreateCommentCommandResponse(validationResult);
+                throw new Exceptions.ValidationException(validationResult);
 
-            var newComment = mapper.Map<Domain.Entities.Comment>(request);
+            var newComment = mapper.Map<Comment>(request);
             await commentRepository.Add(newComment);
-            return new CreateCommentCommandResponse(mapper.Map<CreateCommentModel>(newComment));
+            return mapper.Map<CreateCommentCommandResponse>(newComment);
         }
     }
 }
