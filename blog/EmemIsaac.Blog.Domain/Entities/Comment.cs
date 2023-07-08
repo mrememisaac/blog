@@ -5,6 +5,8 @@ namespace EmemIsaac.Blog.Domain.Entities
 {
     public class Comment : Entity
     {
+        public const int ContentMaximumLength = 250;
+
         public Guid ParentId { get; set; }
 
         public string Content { get; set; }
@@ -13,8 +15,7 @@ namespace EmemIsaac.Blog.Domain.Entities
 
         public Guid ArticleId { get; set; }
 
-        public string AuthorId { get; set; }
-
         public string AuthorName { get; set; }
+
     }
 }
