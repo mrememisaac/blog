@@ -14,7 +14,9 @@ namespace EmemIsaac.Blog.Persistence
            
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            
+            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+
             return services;
         }
     }
