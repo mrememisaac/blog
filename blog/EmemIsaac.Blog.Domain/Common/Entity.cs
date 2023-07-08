@@ -4,6 +4,8 @@ namespace EmemIsaac.Blog.Domain.Common
 {
     public class Entity : IEntity
     {
+        public const int MaximumUserIdLength = 50;
+
         public Guid Id { get; set; }
 
         public DateTimeOffset CreateDate { get; set; }
