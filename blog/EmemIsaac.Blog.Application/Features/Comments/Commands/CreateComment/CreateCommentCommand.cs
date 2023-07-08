@@ -3,7 +3,6 @@ using System;
 
 namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
 {
-
     public class CreateCommentCommand : IRequest<CreateCommentCommandResponse>
     {
         public Guid ParentId { get; set; }
@@ -13,7 +12,7 @@ namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
         public Guid ArticleId { get; set; }
 
         public string AuthorId { get; set; }
-
+        
         public string AuthorName { get; set; }
     }
 }
