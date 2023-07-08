@@ -8,7 +8,7 @@ namespace EmemIsaac.Blog.Application.Features.Articles
 
         public string Content { get; set; }
 
-        public string AuthorName { get; set; }
+        public string AuthorId { get; set; }
 
         public DateTimeOffset CreateDate { get; set; }
     }
