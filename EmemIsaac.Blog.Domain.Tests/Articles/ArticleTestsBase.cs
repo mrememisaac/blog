@@ -2,7 +2,8 @@
 using EmemIsaac.Blog.Application.Contracts.Persistence;
 using EmemIsaac.Blog.Application.Profiles;
 using EmemIsaac.Blog.Application.UnitTests.Mocks;
-using Moq;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading;
 
 namespace EmemIsaac.Blog.Application.UnitTests.Articles
@@ -12,6 +13,7 @@ namespace EmemIsaac.Blog.Application.UnitTests.Articles
         protected readonly IMapper mapper;
         protected readonly IArticleRepository articleRepository;
         protected readonly CancellationToken cancellationToken;
+        protected readonly IServiceProvider _serviceProvider;
 
         public ArticleTestsBase()
         {
@@ -26,6 +28,11 @@ namespace EmemIsaac.Blog.Application.UnitTests.Articles
                 cfg.AddProfile<ArticleProfiles>();
             });
             mapper = configurationProvider.CreateMapper();
+
+            var services = new ServiceCollection();
+            services.AddApplicationServices();
+            services.AddScoped<IArticleRepository, ListBasedArticleRepository>();
+            _serviceProvider = services.BuildServiceProvider();
         }
 
     }
