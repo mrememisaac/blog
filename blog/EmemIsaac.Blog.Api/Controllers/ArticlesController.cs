@@ -46,7 +46,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(article);
         }
 
-        [HttpGet("GetArticleByUrl", Name = nameof(GetArticleByUrl))]
+        [HttpGet("GetArticleById", Name = nameof(GetArticleById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -72,7 +72,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return CreatedAtAction(nameof(GetArticleById), response);
         }
 
-        [HttpPost("CreateArticle", Name = nameof(CreateArticle))]
+        [HttpPost("UpdateArticle", Name = nameof(UpdateArticle))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
