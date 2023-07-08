@@ -27,11 +27,11 @@ namespace EmemIsaac.Blog.Application.UnitTests.Articles.Commands
                 Title = article.Title + " updated",
                 Description = article.Description + " updated",
                 ImageUrl = article.ImageUrl,
-                Url = article.Url + "-updated",        
-                Sections = mapper.Map<ICollection<NewArticleSection>>(article.Sections)
+                Url = article.Url + "-updated",   
+                Content = article.Content + "-updated"
             };
             var logger = new Mock<ILogger<UpdateArticleCommandHandler>>().Object;
-            var validator = new UpdateArticleCommandValidator(articleRepository);
+            var validator = new UpdateArticleCommandValidator(_serviceProvider);
             var handler = new UpdateArticleCommandHandler(mapper, logger, validator, repo);
 
 
