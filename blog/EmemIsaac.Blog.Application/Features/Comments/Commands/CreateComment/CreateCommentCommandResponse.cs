@@ -5,32 +5,17 @@ using System.Collections.Generic;
 
 namespace EmemIsaac.Blog.Application.Features.Comments.Commands.CreateComment
 {
-    public class CreateCommentCommandResponse : BaseResponse
+    public class CreateCommentCommandResponse
     {
-        public CreateCommentModel Comment { get; set; }
+        public Guid ParentId { get; set; }
 
-        public CreateCommentCommandResponse() : base()
-        {
-        }
+        public string Content { get; set; }
 
-        public CreateCommentCommandResponse(ValidationResult result) : base(result)
-        {
+        public Guid ArticleId { get; set; }
 
-        }
+        public string AuthorId { get; set; }
 
-        public CreateCommentCommandResponse(CreateCommentModel model) : base()
-        {
-            Comment = model ?? throw new ArgumentNullException(nameof(model));
-        }
+        public string AuthorName { get; set; }
 
-        public CreateCommentCommandResponse(CreateCommentModel model, string message)
-        {
-            Comment = model ?? throw new ArgumentNullException(nameof(model));
-        }
-
-        public CreateCommentCommandResponse(List<string> errors) :base(errors)
-        {
-            ValidationErrors = errors ?? throw new ArgumentNullException(nameof(errors));
-        }
     }
 }
