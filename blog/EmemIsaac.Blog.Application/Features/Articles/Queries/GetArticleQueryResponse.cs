@@ -15,6 +15,8 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Queries
 
         public string Description { get; set; }
 
+        public string Content { get; set; }
+        
         public string Category { get; set; }
 
         public DateTimeOffset CreateDate { get; set; }
@@ -22,8 +24,6 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Queries
         public string AuthorName { get; set; }
 
         public string Stage { get; set; }
-
-        public ICollection<ArticleSection> Sections { get; set; }
 
         public ICollection<ArticleComment> Comments { get; set; }
 

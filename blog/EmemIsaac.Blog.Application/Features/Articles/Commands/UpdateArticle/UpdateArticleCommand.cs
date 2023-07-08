@@ -17,9 +17,9 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Commands.UpdateArticle
 
         public string Description { get; set; }
 
+        public string Content { get; set; }
+        
         public Guid CategoryId { get; set; }
-
-        public ICollection<NewArticleSection> Sections { get; set; }
 
         public ICollection<ArticleTag> Tags { get; set; }
 

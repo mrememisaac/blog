@@ -1,11 +1,6 @@
-﻿using EmemIsaac.Blog.Application.Features.Categories.Commands.CreateCategory;
-using EmemIsaac.Blog.Application.Responses;
-using EmemIsaac.Blog.Domain.Common;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EmemIsaac.Blog.Application.Features.Articles.Commands.CreateArticle
 {
@@ -18,6 +13,8 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Commands.CreateArticle
         public string Url { get; set; }
 
         public string Description { get; set; }
+
+        public string Content { get; set; }
 
         public Guid CategoryId { get; set; }
 
