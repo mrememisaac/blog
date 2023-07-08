@@ -8,7 +8,7 @@ namespace EmemIsaac.Blog.Api.Services
     {
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public LoggedInUserService(HttpContextAccessor contextAccessor)
+        public LoggedInUserService(IHttpContextAccessor contextAccessor)
         {
             _contextAccessor = contextAccessor;
         }
