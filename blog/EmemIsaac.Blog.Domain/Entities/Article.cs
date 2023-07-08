@@ -10,11 +10,15 @@ namespace EmemIsaac.Blog.Domain.Entities
     {
         public const int MinimumTitleLength = 10;
         public const int MinimumDescriptionLength = 20;
+        public const int MinimumContentLength = 150;
         public const int MaximumTitleLength = MinimumTitleLength * 10;
         public const int MaximumDescriptionLength = MinimumDescriptionLength * 10;
-
+        public const int ImageUrlMaximumLength = 250;
+        public const int ContextMaximumLength = 4000;
+        public const int UrlMaximumLength = MaximumTitleLength;
+        
         [SetsRequiredMembers]
-        public Article(Guid id, string title, string imageUrl, string url, string description)
+        public Article(Guid id, string title, string imageUrl, string url, string description, string content)
         {
             if (string.IsNullOrEmpty(title))
             {
@@ -35,11 +39,16 @@ namespace EmemIsaac.Blog.Domain.Entities
             {
                 throw new ArgumentException($"'{nameof(description)}' cannot be null or empty.", nameof(description));
             }
+            if (string.IsNullOrEmpty(content))
+            {
+                throw new ArgumentException($"'{nameof(content)}' cannot be null or empty.", nameof(content));
+            }
             Id = id;
             Title = title;
             ImageUrl = imageUrl;
             Url = url;
             Description = description;
+            Content = content;
         }
 
         private Article() { }
@@ -52,6 +61,8 @@ namespace EmemIsaac.Blog.Domain.Entities
 
         public required string Description { get; init; }
 
+        public required string Content { get; init; }
+
         public Guid CategoryId { get; set; }
 
         public Category Category { get; set; }
@@ -63,8 +74,6 @@ namespace EmemIsaac.Blog.Domain.Entities
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
         public ICollection<Tag> Tags { get; set; } = new List<Tag>();
-
-        public ICollection<Section> Sections { get; set; } = new List<Section>();
 
     }
 }
