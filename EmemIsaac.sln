@@ -29,7 +29,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{16B230F0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Api", "blog\EmemIsaac.Blog.Api\EmemIsaac.Blog.Api.csproj", "{6AFFB7A2-FC89-4E0C-B43E-1DEC0A8D44A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Application.UnitTests", "EmemIsaac.Blog.Domain.Tests\EmemIsaac.Blog.Application.UnitTests.csproj", "{BFAF2981-8445-4D78-BD2A-C65357A891BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Application.UnitTests", "blog\EmemIsaac.Blog.Domain.Tests\EmemIsaac.Blog.Application.UnitTests.csproj", "{BFAF2981-8445-4D78-BD2A-C65357A891BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.Persistence.IntegrationTests", "blog\EmemIsaac.Blog.Persistence.IntegrationTests\EmemIsaac.Blog.Persistence.IntegrationTests.csproj", "{CE5C0ECA-391A-473C-A13A-5757FF4835BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmemIsaac.Blog.API.IntegrationTests", "blog\EmemIsaac.Blog.API.IntegrationTests\EmemIsaac.Blog.API.IntegrationTests.csproj", "{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmemIsaac.Blog.BApplication", "blog\EmemIsaac.Blog.BApplication\EmemIsaac.Blog.BApplication.csproj", "{EE6618EE-30C7-4699-8D9A-4FD16C26BF11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +67,18 @@ Global
 		{BFAF2981-8445-4D78-BD2A-C65357A891BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFAF2981-8445-4D78-BD2A-C65357A891BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFAF2981-8445-4D78-BD2A-C65357A891BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5C0ECA-391A-473C-A13A-5757FF4835BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5C0ECA-391A-473C-A13A-5757FF4835BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5C0ECA-391A-473C-A13A-5757FF4835BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5C0ECA-391A-473C-A13A-5757FF4835BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE6618EE-30C7-4699-8D9A-4FD16C26BF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE6618EE-30C7-4699-8D9A-4FD16C26BF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE6618EE-30C7-4699-8D9A-4FD16C26BF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE6618EE-30C7-4699-8D9A-4FD16C26BF11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +97,9 @@ Global
 		{16B230F0-C5EA-4102-965A-9B7617618863} = {0E0B913A-38D3-43D1-8180-FE877629F738}
 		{6AFFB7A2-FC89-4E0C-B43E-1DEC0A8D44A2} = {F26F8008-22F8-4909-A186-6A4A780A428F}
 		{BFAF2981-8445-4D78-BD2A-C65357A891BF} = {16B230F0-C5EA-4102-965A-9B7617618863}
+		{CE5C0ECA-391A-473C-A13A-5757FF4835BF} = {16B230F0-C5EA-4102-965A-9B7617618863}
+		{6F83785A-81BD-455A-93F3-2A1CD2C0F3E3} = {16B230F0-C5EA-4102-965A-9B7617618863}
+		{EE6618EE-30C7-4699-8D9A-4FD16C26BF11} = {E845EE6E-4E26-414B-95F8-0E281A96970E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {155C93D9-7CFD-47B3-A3E6-AAEDE8AA2C3C}
