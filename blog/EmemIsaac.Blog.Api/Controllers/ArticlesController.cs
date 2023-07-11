@@ -1,5 +1,6 @@
 ﻿using EmemIsaac.Blog.Application.Features.Articles.Commands.CreateArticle;
 using EmemIsaac.Blog.Application.Features.Articles.Commands.DeleteArticle;
+using EmemIsaac.Blog.Application.Features.Articles.Commands.UpdateArticle;
 using EmemIsaac.Blog.Application.Features.Articles.Queries;
 using EmemIsaac.Blog.Application.Features.Articles.Queries.GetArticleById;
 using EmemIsaac.Blog.Application.Features.Articles.Queries.GetArticleByUrl;
@@ -26,7 +27,7 @@ namespace EmemIsaac.Blog.Api.Controllers
 
         [HttpGet("all", Name = nameof(GetAllArticles))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<ListArticlesQuery>>> GetAllArticles()
+        public async Task<ActionResult<IEnumerable<ListArticlesQueryResponse>>> GetAllArticles()
         {
             var articles = await mediator.Send(new ListArticlesQuery());
             return Ok(articles);
@@ -78,7 +79,7 @@ namespace EmemIsaac.Blog.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CreateArticleCommandResponse>> UpdateArticle(CreateArticleCommand command)
+        public async Task<ActionResult<UpdateArticleCommandResponse>> UpdateArticle(UpdateArticleCommand command)
         {
             var response = await mediator.Send(command);
             return response;
