@@ -36,7 +36,7 @@ namespace EmemIsaac.Blog.Api.Controllers
         [HttpGet("allwitharticles", Name = nameof(GetCategoriesWithArticles))]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategoriesWithArticles()
+        public async Task<ActionResult<IEnumerable<GetCategoriesWithArticlesQueryResponse>>> GetCategoriesWithArticles()
         {
             var categories = await mediator.Send(new GetCategoriesWithArticlesQuery());
             return Ok(categories);
