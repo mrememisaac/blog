@@ -27,7 +27,7 @@ namespace EmemIsaac.Blog.Application.Profiles
                 .ForMember(d => d.Articles, opt => opt.Ignore())
                 .ForMember(d => d.Url, opt => opt.Ignore())
                 .ReverseMap();
-            CreateMap<Features.Categories.Queries.GetCategoriesWithArticles.Category, Category>()
+            CreateMap<Features.Categories.Queries.GetCategoriesWithArticles.GetCategoriesWithArticlesQueryResponse, Category>()
                 .ForMember(d => d.Id, opt => opt.Ignore())
                 .ForMember(d => d.CreatorId, opt => opt.Ignore())
                 .ForMember(d => d.CreateDate, opt => opt.Ignore())

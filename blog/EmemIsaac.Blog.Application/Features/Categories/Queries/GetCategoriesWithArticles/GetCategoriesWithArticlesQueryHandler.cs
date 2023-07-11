@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategoriesWithArticles
 {
-    public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesWithArticlesQuery, List<Category>>
+    public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesWithArticlesQuery, List<GetCategoriesWithArticlesQueryResponse>>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;
@@ -19,10 +19,10 @@ namespace EmemIsaac.Blog.Application.Features.Categories.Queries.GetCategoriesWi
             _mapper = mapper;
         }
 
-        public async Task<List<Category>> Handle(GetCategoriesWithArticlesQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetCategoriesWithArticlesQueryResponse>> Handle(GetCategoriesWithArticlesQuery request, CancellationToken cancellationToken)
         {
             List<Domain.Entities.Category> categories = (await _categoryRepository.GetCategoriesWithArticles()).OrderBy(x => x.Name).ToList();
-            return _mapper.Map<List<Category>>(categories);
+            return _mapper.Map<List<GetCategoriesWithArticlesQueryResponse>>(categories);
         }
     }
 }
