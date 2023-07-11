@@ -25,7 +25,10 @@ services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "EmemIsaac.Blog.Api", Version = "v1" });
 });
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -41,6 +44,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+app.UseCors("Open");
 
 app.UseAuthentication();
 app.UseAuthorization();
