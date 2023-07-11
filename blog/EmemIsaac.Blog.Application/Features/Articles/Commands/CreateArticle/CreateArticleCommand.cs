@@ -17,7 +17,5 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Commands.CreateArticle
         public string Content { get; set; }
 
         public Guid CategoryId { get; set; }
-
-        public ICollection<NewArticleSection> Sections { get; set; }
     }
 }
