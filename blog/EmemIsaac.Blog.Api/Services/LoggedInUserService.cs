@@ -17,6 +17,7 @@ namespace EmemIsaac.Blog.Api.Services
         {
             get
             {
+                return "Emem Isaac";
                 return _contextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
             }
         }
