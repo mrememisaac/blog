@@ -32,7 +32,10 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Commands.UpdateArticle
             {
                 throw new Exceptions.ValidationException(validationResult);
             }
+            var original = await articleRepository.GetById(request.Id);
             var article = mapper.Map<Domain.Entities.Article>(request);
+            article.CreatorId = original.CreatorId;
+            article.CreateDate = original.CreateDate;
             await articleRepository.Update(article);
             return mapper.Map<UpdateArticleCommandResponse>(article);
         }

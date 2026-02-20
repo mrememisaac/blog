@@ -1,6 +1,6 @@
-﻿using EmemIsaac.Blog.BApplication.Contracts;
-using EmemIsaac.Blog.BApplication.ViewModels.Articles;
-using EmemIsaac.Blog.BApplication.ViewModels.Categories;
+﻿using EmemIsaac.Blog.Shared.Contracts;
+using EmemIsaac.Blog.Shared.ViewModels.Articles;
+using EmemIsaac.Blog.Shared.ViewModels.Categories;
 using Microsoft.AspNetCore.Components;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +25,7 @@ namespace EmemIsaac.Blog.BApplication.Pages
         protected async override Task OnInitializedAsync()
         {
             var list = await ArticleDataService.GetAllArticles();
-            Articles = new ObservableCollection<ArticlesListItemViewModel>(list);
+            Articles = new ObservableCollection<ArticlesListItemViewModel>(list.Data!);
         }
     }
 }

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace EmemIsaac.Blog.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ArticlesController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -25,7 +25,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             this.mediator = mediator ?? throw new System.ArgumentNullException(nameof(mediator));
         }
 
-        [HttpGet("all", Name = nameof(GetAllArticles))]
+        [HttpGet(Name = nameof(GetAllArticles))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ListArticlesQueryResponse>>> GetAllArticles()
         {
@@ -33,7 +33,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(articles);
         }
 
-        [HttpGet("GetArticleByUrl", Name = nameof(GetArticleByUrl))]
+        [HttpGet("{url}", Name = nameof(GetArticleByUrl))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -47,7 +47,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(article);
         }
 
-        [HttpGet("GetArticleById", Name = nameof(GetArticleById))]
+        [HttpGet("{id:guid}", Name = nameof(GetArticleById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -61,7 +61,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return Ok(article);
         }
 
-        [HttpPost("CreateArticle", Name = nameof(CreateArticle))]
+        [HttpPost(Name = nameof(CreateArticle))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -70,10 +70,14 @@ namespace EmemIsaac.Blog.Api.Controllers
         public async Task<ActionResult<CreateArticleCommandResponse>> CreateArticle(CreateArticleCommand command)
         {
             var response = await mediator.Send(command);
-            return CreatedAtAction(nameof(GetArticleById), response);
+            var routeValues = new
+            {
+                id = response.Id
+            };
+            return CreatedAtRoute(nameof(GetArticleById), routeValues, response);
         }
 
-        [HttpPost("UpdateArticle", Name = nameof(UpdateArticle))]
+        [HttpPut(Name = nameof(UpdateArticle))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -85,7 +89,7 @@ namespace EmemIsaac.Blog.Api.Controllers
             return response;
         }
 
-        [HttpDelete("DeleteArticle",Name = nameof(DeleteArticle))]
+        [HttpDelete(Name = nameof(DeleteArticle))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

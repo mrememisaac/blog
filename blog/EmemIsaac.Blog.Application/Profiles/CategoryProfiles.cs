@@ -53,6 +53,15 @@ namespace EmemIsaac.Blog.Application.Profiles
                 .ForMember(d => d.Articles, opt => opt.Ignore())
                 .ForMember(d => d.Articles, opt => opt.Ignore())
                 .ReverseMap();
+            CreateMap<Features.Articles.Queries.CategoryModel, Category>()
+                //.ForMember(d => d.Id, opt => opt.Ignore())
+                .ForMember(d => d.CreatorId, opt => opt.Ignore())
+                .ForMember(d => d.CreateDate, opt => opt.Ignore())
+                .ForMember(d => d.LastModifiedDate, opt => opt.Ignore())
+                .ForMember(d => d.ModifierId, opt => opt.Ignore())
+                .ForMember(d => d.Articles, opt => opt.Ignore())
+                .ForMember(d => d.Articles, opt => opt.Ignore())
+                .ReverseMap();
         }
     }
 }

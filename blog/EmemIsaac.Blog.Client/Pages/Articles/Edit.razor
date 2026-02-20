@@ -1,0 +1,13 @@
+﻿@page "/articles/edit/{articleUrl}"
+@using TinyMCE.Blazor
+
+@if (ArticleViewModel == null || Message != null && Loading == false)
+{
+    <div class="alert @PositiveMessage ? alert-danger : alert-info">@Message.</div>
+}
+else
+{
+    <EmemIsaac.Blog.BApplication.Components.Articles.ArticlesAddOrEditComponent ApiKey="@ApiKey" 
+    ArticleViewModel="@ArticleViewModel" Categories="@Categories" 
+    SubmitButtonClicked="@(async() => await HandleSubmit(true))" />
+}

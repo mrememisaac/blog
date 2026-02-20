@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  ememisaac.blog.bapplication:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  ememisaac.blog.administration:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  ememisaac.blog.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

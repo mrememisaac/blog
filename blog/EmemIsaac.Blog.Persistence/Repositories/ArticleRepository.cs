@@ -15,7 +15,7 @@ namespace EmemIsaac.Blog.Persistence.Repositories
 
         public async Task<Article> GetArticleByUrl(string url)
         {
-            return await context.Articles.FirstOrDefaultAsync(x => x.Url == url);
+            return await context.Articles.Include(a => a.Category).FirstOrDefaultAsync(x => x.Url == url);
         }
 
         public async Task<IReadOnlyList<Article>> GetArticles(int page = 0, int numberOfRecords = 50)

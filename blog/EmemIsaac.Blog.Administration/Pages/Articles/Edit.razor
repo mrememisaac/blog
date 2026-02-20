@@ -1,0 +1,24 @@
+﻿@page "/articles/edit/{articleUrl}"
+@using EmemIsaac.Blog.Administration.Components.Articles
+@using TinyMCE.Blazor
+
+@attribute [Authorize(Roles = "Editor")]
+
+@if (ArticleViewModel == null || Message != null && Loading == false)
+{
+    <div class="alert @PositiveMessage ? alert-danger : alert-info">@Message.</div>
+}
+else
+{
+    <AuthorizeView Context="Auth">
+        <Authorized>
+            <ArticlesAddOrEditComponent ApiKey="@ApiKey"
+                                        ArticleViewModel="@ArticleViewModel"
+                                        Categories="@Categories"
+                                        SubmitButtonClicked="@(async() => await HandleSubmit(true))" />
+        </Authorized>
+        <NotAuthorized>
+            You are not authorized to view this page
+        </NotAuthorized>
+    </AuthorizeView>
+}

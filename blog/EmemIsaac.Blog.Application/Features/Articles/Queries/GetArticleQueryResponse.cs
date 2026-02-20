@@ -17,9 +17,11 @@ namespace EmemIsaac.Blog.Application.Features.Articles.Queries
 
         public string Content { get; set; }
         
-        public string Category { get; set; }
+        public CategoryModel Category { get; set; }
 
         public DateTimeOffset CreateDate { get; set; }
+        
+        public DateTimeOffset LastModifiedDate { get; set; }
 
         public string AuthorName { get; set; }
 

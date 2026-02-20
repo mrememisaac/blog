@@ -1,11 +1,11 @@
-.page {
+/*.page {
     position: relative;
-    display: flex;
-    flex-direction: column;
-}
+    width:97%;*/
+    /*display: flex;
+    flex-direction: column;*/
+/*}
 
 main {
-    flex: 1;
 }
 
 .sidebar {
@@ -78,4 +78,35 @@ main {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+}*/
+.gist > td, .gist > span, td > span {
+    font-size: 1vw;
+}
+
+h1 {
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 1.8vw;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.6vw;
+    font-weight: 600;
+}
+
+figcaption {
+    font-size: 1vw;
+    font-style: italic;
+}
+
+p, li, code {
+    font-size: 1.3vw;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.5em 0.5em 1em 0em;
 }

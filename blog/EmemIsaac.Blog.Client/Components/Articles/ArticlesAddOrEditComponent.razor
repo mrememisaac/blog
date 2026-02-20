@@ -1,0 +1,43 @@
+﻿@using TinyMCE.Blazor
+
+<h3 class="mb-4 ms-2">Edit Article</h3>
+
+<EditForm Model="@ArticleViewModel" OnValidSubmit="@(async() => SubmitButtonClicked.InvokeAsync(ArticleViewModel))">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary></ValidationSummary>
+
+    <div class="row mb-3 ms-2">
+        <label hidden for="Title" class="col-sm-3 form-label">@nameof(ArticleViewModel.Title):</label>
+        <InputText id="Title" @bind-Value="ArticleViewModel.Title" class="form-control" placeholder="Enter title" maxlength="100" />
+        <ValidationMessage For="@(() => ArticleViewModel.Title)" />
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <label hidden for="ImageUrl" class="col-sm-3 form-label">@nameof(ArticleViewModel.ImageUrl):</label>
+        <InputText id="ImageUrl" @bind-Value="ArticleViewModel.ImageUrl" class="form-control" placeholder="Select Image Url" />
+        <ValidationMessage For="@(() => ArticleViewModel.ImageUrl)" />
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <label hidden for="Description" class="col-sm-3 form-label">@nameof(ArticleViewModel.Description):</label>
+        <InputTextArea id="Description" @bind-Value="ArticleViewModel.Description" class="form-control" placeholder="Enter description" maxlength="200" />
+        <ValidationMessage For="@(() => ArticleViewModel.Description)" />
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <label hidden for="Category" class="col-sm-3 form-label">Category:</label>
+        <InputSelect id="Category" @bind-Value="SelectedCategoryId" class="form-control" placeholder="Select category">
+            <option value="0">Select category</option>
+            @foreach (var category in Categories)
+            {
+                <option value="@category.Id" @if(ArticleViewModel.CategoryId == @category.Id){ selected }>@category.Name</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => ArticleViewModel.CategoryId)" />
+    </div>
+    <Editor Id="Content" @bind-Value="ArticleViewModel.Content" Field="() => ArticleViewModel.Content"
+            ApiKey="@ApiKey" />
+    <ValidationMessage For="@(() => ArticleViewModel.Content)" />
+    <button class="btn btn-primary mt-3 mb-3" type="submit">Save</button>
+</EditForm>

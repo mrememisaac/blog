@@ -1,0 +1,32 @@
+﻿@page "/articles/{articleUrl}"
+@using Microsoft.AspNetCore.Components.Authorization
+
+<PageTitle></PageTitle>
+
+@if (@Article != null)
+{
+    <AuthorizeView Roles="Administrator, Author">
+        <Authorized>
+            <a class="btn" href="/articles/edit/@Article.Url">Edit</a>
+        </Authorized>
+        <NotAuthorized>
+            <article class="col-md-12">
+                <section>
+                    <h1>@Article.Title</h1>
+                </section>
+                <hr />
+                <section>
+                    <p>@Article.Description</p>
+                </section>
+                <section>
+                    @Article.AuthorName | @Article.CreateDate.ToString("dddd MMMM d, yyyy")
+                </section>
+                <section>
+                    @((MarkupString)Article.Content)
+                </section>
+            </article>
+        </NotAuthorized>
+    </AuthorizeView>
+
+}
+

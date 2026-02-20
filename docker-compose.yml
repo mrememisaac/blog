@@ -1,0 +1,151 @@
+version: "3.4"
+
+services:
+  # ememisaac.blog.api.reverseproxy:
+  #   build:
+  #     context: ./Nginx
+  #     dockerfile: Nginx.Dockerfile
+  #   ports:
+  #     - "80:80"
+  #   restart: always
+
+  ememisaac.identity:
+    container_name: ememisaac.identity
+    image: ${DOCKER_REGISTRY-}ememisaac-identity
+    build:
+      context: .
+      dockerfile: EmemIsaac.Identity/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=@Docker.Compose.King.2024!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - ConnectionStrings__DefaultConnection=Server=ememisaac.blog.sqlserver;Database=EmemIsaac.Blog;User Id=sa; Password=Pass@word; MultipleActiveResultSets=true; TrustServerCertificate=True
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ~/.aspnet/https:/etc/ssl/certs:ro
+    depends_on:
+      - ememisaac.blog.sqlserver
+      # - ememisaac.blog.api.reverseproxy
+    deploy:
+      replicas: 1
+    command:
+      [
+        "bash -c",
+        "apt-get update && apt-get install ca-certificates -y && update-ca-certificates && apt-get install curl -y",
+      ]
+
+  ememisaac.blog.sqlserver:
+    container_name: ememisaac.blog.sqlserver
+    build:
+      context: .
+      dockerfile: sql/sql.Dockerfile
+    restart: always
+    ports:
+      - "1440:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pass@word
+
+  ememisaac.blog.bapplication:
+    container_name: ememisaac.blog.bapplication
+    image: ${DOCKER_REGISTRY-}ememisaac-blog-bapplication
+    build:
+      context: .
+      dockerfile: blog/EmemIsaac.Blog.BApplication/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=@Docker.Compose.King.2024!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - ApiConfigs__ApiService__Uri=https://ememisaac.blog.api
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ~/.aspnet/https:/etc/ssl/certs:ro
+    depends_on:
+      - ememisaac.blog.api
+    deploy:
+      replicas: 1
+
+  ememisaac.blog.administration:
+    container_name: ememisaac.blog.administration
+    image: ${DOCKER_REGISTRY-}ememisaac-blog-administration
+    build:
+      context: .
+      dockerfile: blog/EmemIsaac.Blog.Administration/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=@Docker.Compose.King.2024!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - ApiConfigs__ApiService__Uri=https://ememisaac.blog.api
+      - TextEditor__ApiKey=8ani33xntbgel8n60ho0ug06brtcx8p60jk3gzhdohb8pe4g
+      - IdentityService__ResponseType=code
+      - IdentityService__LogoutUri=Account/logout
+      - IdentityService__LoginUri=Account/login
+      - IdentityService__ClientSecret=d7368896-23ac-41ff-9b27-ca555827a2bb-a6af85bf-9208-430d-84ec-21f58dc48f60
+      - IdentityService__ClientId=administration.blog.ememisaac.com
+      - IdentityService__CallbackPath=/signin-oidc
+      - IdentityService__Authority=https://ememisaac.identity
+      # - IdentityService__Authority=https://0.0.0.0:9000
+      - BlogDataServices__Uri=https://ememisaac.blog.api
+    ports:
+      - "8081:80"
+      - "44381:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ~/.aspnet/https:/etc/ssl/certs:ro
+    depends_on:
+      - ememisaac.blog.api
+    deploy:
+      replicas: 1
+    command:
+      [
+        "bash -c",
+        "apt-get update && apt-get install ca-certificates -y && update-ca-certificates && apt-get install curl -y",
+      ]
+  ememisaac.blog.api:
+    container_name: ememisaac.blog.api
+    image: ${DOCKER_REGISTRY-}ememisaac-blog-api
+    build:
+      context: .
+      dockerfile: blog/EmemIsaac.Blog.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=@Docker.Compose.King.2024!
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/localhost.pfx
+      - ConnectionStrings__DefaultConnection=Server=ememisaac.blog.sqlserver;Database=EmemIsaac.Blog;User Id=sa; Password=Pass@word; MultipleActiveResultSets=true; TrustServerCertificate=True
+      - IdentityService__ResponseType=code
+      - IdentityService__ClientSecret=12f35d80-565c-4b03-b127-568d5677d070-602ab1cf-5e4d-47b2-955f-f43817e8556d
+      - IdentityService__ClientId=api.blog.ememisaac.com
+      - IdentityService__CallbackPath=/signin-oidc
+      - IdentityService__Authority=https://ememisaac.identity
+      # - IdentityService__Authority=https://0.0.0.0:9000
+    ports:
+      - "8082:80"
+      - "44382:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ~/.aspnet/https:/etc/ssl/certs:ro
+    depends_on:
+      - ememisaac.blog.sqlserver
+      - ememisaac.identity
+      # - ememisaac.blog.api.reverseproxy
+    deploy:
+      replicas: 1
+    command:
+      [
+        "bash -c",
+        "apt-get update && apt-get install ca-certificates -y && update-ca-certificates && apt-get install curl -y",
+      ]

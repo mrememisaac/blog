@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>EmemIsaac.Blog.Administration</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AuthorizeView>
+                <Authorized>
+                    <a href="https://github.com/mrememisaac" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ememisaac/" target="_blank">About</a>
+                    <a href="/logout">Logout</a>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+@code {
+    @inject IConfiguration Configuration;
+    @inject NavigationManager NavigationManager
+
+    private string loginUrl { get; set; } = "";
+    private string logoutUrl { get; set; } = "";
+    private string returnUrl { get; set; } = "";
+
+    protected override Task OnInitializedAsync()
+    {
+        returnUrl = $"{NavigationManager.Uri}";
+        loginUrl = $"{Configuration["IdentityService:Authority"]}/{Configuration["IdentityService:LoginUri"]}?ReturnUrl={returnUrl}";
+        logoutUrl = "";// $"{Configuration["IdentityService:Authority"]}/{Configuration["IdentityService:LogoutUri"]}?ReturnUrl={returnUrl}";
+        return base.OnInitializedAsync();
+    }
+
+}
